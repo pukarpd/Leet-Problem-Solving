@@ -6,6 +6,8 @@
 #         self.right = right
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+
+        # working solution 
         self.arr = []
 
         def dfs(root): 
@@ -28,4 +30,12 @@ class Solution:
 
         return p_arr == self.arr
 
+        # Neetcode solution (More memory efficient, instead of O(p and q memory, its just the stack.))
+        # if not p and not q: 
+        #     return True
         
+        # if not p or not q or p.val != q.val: 
+        #     return False
+        
+        # return (self.isSameTree(p.left, q.left) and 
+        # self.isSameTree(p.right,q.right))
