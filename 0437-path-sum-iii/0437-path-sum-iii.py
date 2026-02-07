@@ -6,6 +6,9 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+
+        # O(n) solution based on neet soln of leetcode 560, using a hashmap to keep track of psums. 
+        # hardest of the trilogy. 
         self.res = 0 
         self.hashmap = {0:1}
         def dfs( root, targetSum, cursum): 
