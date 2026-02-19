@@ -1,18 +1,50 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
+        if len(s) == 1: 
+            return 1 
         
- 
-        l = 0
-        hashmap = {}
-        maxf = 0
+
+        freq = {}
         res = 0
+        i, j = 0, 1
+        freq[s[i]] = 1 
+        while i < j and j < len(s): 
+            if s[j] not in freq: 
+                freq[s[j]] = 1 
+            else: 
+                freq[s[j]] += 1 
+            maxFreq = max(freq.values())
+            diff = (j - i + 1) - maxFreq
+            print(maxFreq, diff)
+            if diff > k: 
+                freq[s[i]] -= 1 
+                i += 1 
+            res = max(res, len(s[i:j+1]))
+            j += 1 
+        return res
 
-        for r in range(len(s)):
-            hashmap[s[r]] = 1 + hashmap.get(s[r], 0)
-            maxf = max(maxf, hashmap[s[r]])
-            if (r - l + 1) - maxf > k:
-                hashmap[s[l]] -= 1 
-                l += 1
-        return (r - l + 1 )
+        # freq = {}
+        # res = 0
+        # i = 0
 
-    
+        # for j in range(len(s)):
+        #     freq[s[j]] = freq.get(s[j], 0) + 1
+            
+        #     maxFreq = max(freq.values())
+            
+        #     while (j - i + 1) - maxFreq > k:
+        #         freq[s[i]] -= 1
+        #         i += 1
+            
+        #     res = max(res, j - i + 1)
+
+        # return res
+
+
+
+
+
+
+
+            
+
