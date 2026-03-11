@@ -1,4 +1,7 @@
 class Solution:
     def bitwiseComplement(self, n: int) -> int:
-        mask = int(''.join(['1'] * len(bin(n)[2:])), 2)
+        if n == 0: 
+            return 1
+        k = n.bit_length()
+        mask = (1<<k)-1
         return n ^ mask
