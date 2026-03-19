@@ -1,20 +1,12 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        
-        count = {} 
-        freq = [[] for i in range(len(nums) + 1)]
-
-        for n in nums: 
-            count [n] = 1 + count.get(n, 0) #populates a hashmap 
-        for key, value in count.items(): 
-            freq[value].append(key)
-        
-        result = [] 
-
-        for i in range(len(freq) - 1, 0, -1): 
-            for n in freq[i]: 
-                result.append(n)
-                if len(result) == k: 
-                    return result 
-        
-
+        k_freq = k
+        c = Counter(nums)
+        res = []
+        for k, v in c.items(): 
+            curmax = max(c.values())
+            if v == curmax and k_freq > 0: 
+                res.append(k)
+                c[k] = 0
+                k_freq -= 1 
+        return res
