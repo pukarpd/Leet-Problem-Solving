@@ -8,7 +8,7 @@ class Solution:
 
         rti = rti.split(" ")
         map = {itr[i]: rti[i] for i in range(len(itr)-1,-1,-1)}
-        print(map)
+        # print(map)
         res = []
         for k, v in map.items(): 
             while num >= k: 
